@@ -1,0 +1,15 @@
+{
+  "name": "Background Fetch", 
+  "service_worker_scripts": [
+    "js/worker.js"
+  ], 
+  "content_scripts": [
+    "js/content.js"
+  ], 
+  "permissions": [
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

@@ -1,1 +1,1 @@
-# Extension-Background-Fetch-Module
+# Extension-Cookie-Extension
