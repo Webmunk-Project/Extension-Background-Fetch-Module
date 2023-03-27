@@ -26,44 +26,6 @@
   registerCustomModule(function (config) {
     console.log('[Background Fetch] Initialized.')
 
-    /*
-    console.log('chrome.webRequest: ' + chrome.webRequest)
-
-    chrome.webRequest.onHeadersReceived.addListener(function(details) {
-      if (details.url.includes('google.com')) {
-          let newHeaders = []
-
-          const disableHeaders = [
-            'x-frame-options',
-            'content-security-policy'
-          ]
-
-          for (var i = 0; i < details.responseHeaders.length; ++i) {
-            if (disableHeaders.includes(details.responseHeaders[i].name.toLowerCase())) {
-              console.log('chrome.webRequest: Remove ' + details.responseHeaders[i].name)
-            } else {
-              newHeaders.push(details.responseHeaders[i])
-            }
-          }
-
-          console.log('chrome.webRequest RETURN: ')
-          console.log(newHeaders)
-
-          return {
-            responseHeaders: newHeaders
-          };
-        }
-
-      return {
-        responseHeaders: details.responseHeaders
-      };
-    },
-    {
-      urls: ["<all_urls>"]
-    },
-    ["responseHeaders"]);
-*/
-
     const stringToId = function (str) {
       let id = str.length
       Array.from(str).forEach((it) => {
@@ -71,9 +33,6 @@
       })
       return id * 10000 + 6794
     }
-
-    console.log('id: ')
-    console.log(stringToId('strip'))
 
     const stripRule = {
       id: stringToId('strip'),
@@ -92,7 +51,7 @@
       addRules: [stripRule]
     }, () => {
       if (chrome.runtime.lastError) {
-        console.log(chrome.runtime.lastError.message)
+        console.log('[Background Fetch] ' + chrome.runtime.lastError.message)
       }
     }
     )
