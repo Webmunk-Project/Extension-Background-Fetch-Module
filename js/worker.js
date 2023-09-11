@@ -1,5 +1,3 @@
-/* global chrome, registerCustomModule, registerMessageHandler */
-
 (function () {
   const fetchURLContent = function (request, sender, sendResponse) {
     console.log('[Background Fetch] Fetching ' + request.url + '...')
@@ -23,7 +21,7 @@
     return false
   }
 
-  registerCustomModule(function (config) {
+  self.registerCustomModule(function (config) {
     console.log('[Background Fetch] Initialized.')
 
     const stringToId = function (str) {
@@ -58,6 +56,6 @@
 
     console.log('[Background Fetch] Added rule.')
 
-    registerMessageHandler('fetch_url_content', fetchURLContent)
+    self.registerMessageHandler('fetch_url_content', fetchURLContent)
   })
 })()
